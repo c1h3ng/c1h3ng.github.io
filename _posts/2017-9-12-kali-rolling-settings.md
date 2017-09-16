@@ -94,7 +94,7 @@ gnome扁平化，清爽的界面，以及kali默认的主题我认为已经很�
 ## 输入法
 安装fcitx框架及google拼音：
 ```
-root@kali:~# apt-get install fcitx && fcitx-googlepinyin
+root@kali:~# apt-get install fcitx fcitx-googlepinyin
 root@kali:~# reboot
 ```
 重启后桌面左下角出现一个任务栏，右键输入法的键盘图标->configure，将google拼音添加至输入法中，再根据自身需要定制热键。
