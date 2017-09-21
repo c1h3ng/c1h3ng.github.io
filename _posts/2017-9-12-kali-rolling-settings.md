@@ -9,9 +9,9 @@ categories:
   Linux
 ---
 暑假期间折腾双系统折腾了几天，本来都定制好了，开学后回到实验室，连上自己的显示器想双屏爽一爽...结果系统根本检测不到扩展显示器，搞了半天确定是因为nvidia显卡驱动的问题，~~一顿骚操作，直接把图形化桌面搞崩了，又一顿骚操作直接还原不回去了~~，整个人头都大了，只能重新装，再折腾一次了，记录下来，感觉Linux还玩不转，以后很可能再次被骚操作搞坏...
-# 安装
+# 0x01 安装
 我使用的是kali rolling 2017.1的镜像，首先在win10下磁盘管理器中格式化一个盘(220G)，删除分区，然后分出120G做linux的系统盘，剩下的还是挂载到windows上，使用ultraiso将iso镜像文件刻录进事先准备好的8G优盘中，启动盘做好，重启选择U盘启动，选择图形化安装，如果提示光盘无法挂载，拔下U盘再插上点击重试即可，为了避免以后出现一些头疼的问题，语言还是选择了英文，其他的没什么值得说的，然后是分区，选中之前分好的硬盘分区，选择ext4文件系统，然后等待安装，之后安装linux的grub引导，我选择覆盖了windows的MBR引导，至此安装就结束了。
-# 显卡驱动(第一个坑)
+# 0x02 显卡驱动(第一个坑)
 经过丝滑般顺畅的安装流程后，迫不及待想看见gnome桌面扁平清爽的界面，输入帐号密码，然后...就卡住了，重启，发现还是能进命令行的，就是进不了图形化界面，看来即使重装也还是不能避免显卡驱动这个蛋疼问题...
 
 我的显卡是intel核显和nvidia gtx 960M的独显，第九代，还算是比较新的系列，nvidia官方提供的驱动程序是闭源的，所以很多linux发行版都集成了由第三方开发的nouveau显卡驱动，nouveau是由第三方为nvidia显卡开发的一个开源显卡驱动，但并没有得到英伟达官方的支持和认可，并且对较新的N卡支持很差，所以还是应该去官方下载适合自己显卡型号的驱动，总之，**nouveau这个东西太坑了**...
@@ -34,7 +34,7 @@ root@kali:/etc/default# vim grub //写入 rdblacklist=nouveau nouveau.modeset=0
 
 ![screen](https://c1h3ng.github.io/assets/images/screen.jpg)
 
-# 配置源及更新
+# 0x03 配置源及更新
 首先第一件事是更换apt源，向 /etc/apt/sources.list 添加中科大的kali rolling源，然后更新
 ```
 root@kali:# cat /etc/apt/sources.list
@@ -49,7 +49,7 @@ deb-src http://mirrors.ustc.edu.cn/kali kali-rolling main non-free contrib
 root@kali:#apt-get update && apt-get upgrade && apt-get dist-upgrade //更新软件索引文件然后根据依赖关系更新软件包
 ```
 接下来就是漫长的等待，其他细节就不记录了。
-# 简单配置bash和vim
+# 0x04 简单配置bash和vim
 接下来就是根据个人习惯配置bash，首先打开终端，选择Edit->Profile Preferences->Colors->Built-in schemes，我喜欢黑底绿字，就改成黑底绿字：
 
 ![terminal](https://c1h3ng.github.io/assets/images/terminal.png)
@@ -87,7 +87,7 @@ set mouse=a "开启鼠标定位光标
 ![vim](https://c1h3ng.github.io/assets/images/vim.png)
 
 效果如上，简单配置下已经足够日常使用了。
-# 桌面美化及软件下载
+# 0x05 桌面美化及软件下载
 gnome扁平化，清爽的界面，以及kali默认的主题我认为已经很符合我的审美了，有需要的话可以换张好看的壁纸即可，另外有强迫症的我完全不能忍受dash to dock在桌面的左边，在dash to dock settings中将dock放置到底部，现在看着舒服多了(逃)
 
 ![desktop](https://c1h3ng.github.io/assets/images/desktop.png)

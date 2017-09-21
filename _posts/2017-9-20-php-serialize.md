@@ -9,7 +9,7 @@ categories:
   php
 ---
 php反序列化漏洞是去年比较火的一个bug，去年SWPUCTF校赛学长们还出了一道反序列化的题，当时就了解了下，后来打比赛，其他学校的师傅也陆陆续续出到过反序列化的题，原来的博客有写过，博客托管到github后再记录一下以免忘记。
-# 关于serialize和unserialize
+# 0x01 关于serialize和unserialize
 serialize和unserialize分别是php中的序列化和反序列化函数，官方说明如下：
 
 ![serialize](https://c1h3ng.github.io/assets/images/serialize.png)
@@ -61,9 +61,9 @@ echo urlencode(serialize($test));
 ![fanxulie](https://raw.githubusercontent.com/c1h3ng/c1h3ng.github.io/master/assets/images/fanxulie.png)
 
 可以看见var和public修饰的属性都是公有的，所以序列化之后的格式是一样的，protected修饰的序列化后变成了s:4:" * c"，编码之后可以发现这里多出了"\0*\0"，private修饰的属性序列化后的形式变为了s:7:" test d"，比公有属性多出了"\0<类名>\0"，在进行长度计算时也会计算在内。
-# 关于魔术方法\__sleep()和__wakeup()
+# 0x02 关于魔术方法\__sleep()和__wakeup()
 在对对象进行序列化和反序列化时，如果存在魔术方法\__sleep()和\__wakeup()，那么在序列化之前会触发\__sleep()方法，在反序列化前会触发\__wakeup()方法，但是反序列化时如果对序列化的字串反序列化失败就不会触发\__wakeup()方法
-# 绕过__wakeup进行危险操作
+# 0x03绕过__wakeup进行危险操作
 上一个直观的例子，绕过\__wakeup()方法进行一些危险的操作：
 ```
 <?php
