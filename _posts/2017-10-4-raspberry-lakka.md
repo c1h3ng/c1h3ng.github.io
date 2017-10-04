@@ -43,7 +43,7 @@ win32diskImager选择镜像和SD卡：
 
 ![](https://github.com/c1h3ng/c1h3ng.github.io/blob/master/assets/images/success.png?raw=true)
 
-镜像烧录完成，现在拔出SD卡，插入树莓派中，给树莓派通上电：
+镜像烧录完成，现在拔出SD卡，插入树莓派中，给树莓派通上电，第一次需要等待片刻，初始化完成后会自动reboot，之后就可以使用了：
 
 ![](https://github.com/c1h3ng/c1h3ng.github.io/blob/master/assets/images/boot.jpg?raw=true)
 
