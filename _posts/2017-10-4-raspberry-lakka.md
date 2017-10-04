@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "树莓派学习笔记——实现FC卡带游戏机"
+title: "树莓派学习笔记——打造FC卡带游戏机"
 date: 2017-10-4
 tags:
   Linux
