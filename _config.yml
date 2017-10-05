@@ -467,7 +467,7 @@ facebook_comments_plugin:
   enable: false
   num_of_posts: 10  # min posts num is 1
   width: 100%       # default width is 550px
-  scheme: light     # default scheme is light (light or dark)
+  scheme: dark     # default scheme is light (light or dark)
 
 # VKontakte API Support.
 # To get your AppID visit https://vk.com/editapp?act=create
