@@ -33,7 +33,7 @@ serialize和unserialize分别是php中的序列化和反序列化函数，官方
 •	U - unicode string
 ```
 以上为序列化中常见格式，来看一个实例：
-```
+```php
 <?php
 $a = array(1,"apple",true,3.1415926,NULL);
 echo serialize($a);
@@ -44,7 +44,7 @@ var_dump(unserialize(serialize($a)));
 ![xulie](https://c1h3ng.github.io/assets/images/xulie.png)
 
 在对对象进行序列化时，属性的修饰符(public,var,protected,private)的不同，生成的序列化字符串也会有所不同，来看实例：
-```
+```php
 <?php
 class test{
 	var $a = "var";
@@ -63,9 +63,9 @@ echo urlencode(serialize($test));
 可以看见var和public修饰的属性都是公有的，所以序列化之后的格式是一样的，protected修饰的序列化后变成了s:4:" * c"，编码之后可以发现这里多出了"\0*\0"，private修饰的属性序列化后的形式变为了s:7:" test d"，比公有属性多出了"\0<类名>\0"，在进行长度计算时也会计算在内。
 # 0x02 关于魔术方法\__sleep()和__wakeup()
 在对对象进行序列化和反序列化时，如果存在魔术方法\__sleep()和\__wakeup()，那么在序列化之前会触发\__sleep()方法，在反序列化前会触发\__wakeup()方法，但是反序列化时如果对序列化的字串反序列化失败就不会触发\__wakeup()方法
-# 0x03绕过__wakeup进行危险操作
+# 0x03 绕过__wakeup进行危险操作
 上一个直观的例子，绕过\__wakeup()方法进行一些危险的操作：
-```
+```php
 <?php
 class test{
 	var $file = null;

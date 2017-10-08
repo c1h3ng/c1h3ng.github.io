@@ -46,11 +46,11 @@ categories:
 ![ssh](https://raw.githubusercontent.com/c1h3ng/c1h3ng.github.io/master/assets/images/ssh.png)
 
 ssh远程登录使用vi会出现，上下左右退格键没法用，所以我们需要下载vim
-```
+```bash
 pi@raspberrypi:~ $ sudo apt-get install vim
 ```
 下载完成后，还是把源换成国内源，速度可观一点
-```
+```bash
 pi@raspberrypi:~ $ sudo vim /etc/apt/sources.list
 deb http://mirrors.163.com/debian/ wheezy main non-free contrib
 deb http://mirrors.163.com/debian/ wheezy-updates main non-free contrib
@@ -66,7 +66,7 @@ deb-src http://mirrors.163.com/debian-security/ wheezy/updates main non-free con
 ```
 # 0x04 vim和bash
 这里还是直接套用我kali里的配置：
-```
+```bash
 pi@raspberrypi:~ $ sudo vim .bashrc //只能修改pi用户的bash配置
 //添加
 alias ll='ls -al'

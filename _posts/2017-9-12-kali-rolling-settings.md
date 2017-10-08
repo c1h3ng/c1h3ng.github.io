@@ -23,7 +23,7 @@ categories:
 ![kali](https://c1h3ng.github.io/assets/images/kali.jpg)
 
 F10启动，忐忑的输完帐号密码终于进去了，不过这样需要每次在引导界面修改，很麻烦，所以进入系统后先将nouveau加入黑名单
-```
+```bash
 root@kali:# cd /etc/modprobe.d
 root@kali:/etc/modprobe.d# vim nvidia-graphics-drivers.conf //写入 blacklist nouveau
 root@kali:/etc/modprobe.d# cd /etc/default
@@ -36,7 +36,7 @@ root@kali:/etc/default# vim grub //写入 rdblacklist=nouveau nouveau.modeset=0
 
 # 0x03 配置源及更新
 首先第一件事是更换apt源，向 /etc/apt/sources.list 添加中科大的kali rolling源，然后更新
-```
+```bash
 root@kali:# cat /etc/apt/sources.list
 # deb cdrom:[Debian GNU/Linux 2017.1 _Kali-rolling_ - Official Snapshot amd64 LIVE/INSTALL Binary 20170416-02:08]/ kali-rolling contrib main non-free
 
@@ -54,7 +54,7 @@ root@kali:#apt-get update && apt-get upgrade && apt-get dist-upgrade //更新软
 
 ![terminal](https://c1h3ng.github.io/assets/images/terminal.png)
 
-```
+```bash
 //可根据自身需求定制
 root@kali:# cd ~
 root@kali:~# vim .bashrc
@@ -65,7 +65,7 @@ alias rm='rm -i'
 root@kali:~# source .bashrc //立即生效
 ```
 接下来配置vim，~~文本编辑器中最经典生命力最强的上古神奇，咳咳，这里就不纠结了，反正我不用vim写代码，~~简单配置下能方便的进行最简单的编辑即可:
-```
+```bash
 root@kali:# cd /etc/vim
 root@kali:/etc/vim# ls
 gvimrc  php_funclist.txt  vimrc  vimrc.tiny
@@ -93,7 +93,7 @@ gnome扁平化，清爽的界面，以及kali默认的主题我认为已经很�
 ![desktop](https://c1h3ng.github.io/assets/images/desktop.png)
 ## 输入法
 安装fcitx框架及google拼音：
-```
+```bash
 root@kali:~# apt-get install fcitx fcitx-googlepinyin
 root@kali:~# reboot
 ```
@@ -102,14 +102,14 @@ root@kali:~# reboot
 ![fcitx](https://raw.githubusercontent.com/c1h3ng/c1h3ng.github.io/master/assets/images/fcitx.png)
 ## 网易云音乐
 进入[网易云音乐官网](http://music.163.com/#/download)下载，我选择的是ubuntu16.04 64位的deb包，没试过deepin的deb包。
-```
+```bash
 root@kali:~/Downloads# dpkg -i netease-cloud-music_1.0.0-2_amd64_ubuntu16.04.deb
 //安装网易云音乐deb包，如果出现依赖问题，执行如下命令
 root@kali:~/Downloads# apt-get -f install
 //安装完依赖之后，再次执行第一条命令即可
 ```
 安装完后在dock中可以找到网易云音乐的快捷方式，如果无法打开网易云音乐，在快捷方式中禁用沙箱(*可能会存在安全隐患*)，~~貌似安装32位网易云就不会出现这种情况？~~
-```
+```bash
 root@kali:~# cd /usr/share/applications
 root@kali:~# vim netease-cloud-music.desktop
 //在Exec后面加上参数 --no-sandbox
@@ -136,7 +136,7 @@ Linux下需要一个通讯软件，但是QQ实在是太坑了~~(羡慕deepin)~~�
 
 
 我选择的是已编译好的打包文件下载，解包后wechat目录下有一个可以启动客户端文件，但是没有快捷方式，我们还需要创建一个快捷方式：
-```
+```bash
 root@kali:~# cd /usr/share/applications
 root@kali:~# vim wechat.desktop
 //内容如下，根据自己的情况修改
@@ -164,7 +164,7 @@ LibreOffice是linux平台下的办公软件，开源并且完全免费，有一�
 ![office](https://c1h3ng.github.io/assets/images/office.png)
 ## 文本编辑器
 我选择了atom，界面酷炫可定制，很多优秀的插件，当然替代品也很多，sublime vscode都有各自的优点，[atom官网](https://atom.io/)，下载deb包，然后安装
-```
+```bash
 root@kali:~/Downloads# dpkg -i atom-amd64.deb
 //若出现依赖问题，执行如下命令
 root@kali:~/Downloads# apt-get -f install
@@ -172,7 +172,7 @@ root@kali:~/Downloads# dpkg -i atom-amd64.deb
 ```
 ![atom](https://c1h3ng.github.io/assets/images/atom.png)
 ## ShadowSocks
-```
+```bash
 root@kali:~# apt-get install qt5-qmake qtbase5-dev libbotan1.10-dev pkg-config debhelper
 root@kali:~# cd Downloads/
 root@kali:~/Downloads# git clone https://github.com/shadowsocks/libQtShadowsocks.git
@@ -190,7 +190,7 @@ root@kali:~/Downloads/shadowsocks-qt5# dpkg -i ../shadowsocks-qt5_2.9.0-1_amd64.
 安装完成后，dock中就有了熟悉的纸飞机了
 ## Google Chrome
 由于学校某些网站对火狐的兼容性太差了(敲桌)，前端加载出来各种bug，所以这里我还需要一个强大的浏览器
-```
+```bash
 root@kali:~/Downloads# wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 //下载最新版本的google chrome 64位的debian安装包
 root@kali:~/Downloads# dpkg -i google-chrome-stable_current_amd64.deb
@@ -198,7 +198,7 @@ root@kali:~/Downloads# apt-get -f install
 root@kali:~/Downloads# dpkg -i google-chrome-stable_current_amd64.deb
 ```
 这里chrome64位的程序出现了和网易云音乐一样的问题，可以使用一样的方法解决：
-```
+```bash
 root@kali:~# cd /usr/share/applications
 root@kali:/usr/share/applications# vim google-chrome.desktop
 //exec后添加参数 --no-sandbox
