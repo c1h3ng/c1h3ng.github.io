@@ -108,7 +108,7 @@ root@kali:~/Downloads# dpkg -i netease-cloud-music_1.0.0-2_amd64_ubuntu16.04.deb
 root@kali:~/Downloads# apt-get -f install
 //安装完依赖之后，再次执行第一条命令即可
 ```
-安装完后在dock中可以找到网易云音乐的快捷方式，如果无法打开网易云音乐，在快捷方式中禁用沙箱(*可能会存在安全隐患*)，~~貌似安装32位网易云就不会出现这种情况？~~
+安装完后在dock中可以找到网易云音乐的快捷方式，如果无法打开网易云音乐，在快捷方式中禁用沙箱(*可能会存在安全隐患*)
 ```bash
 root@kali:~# cd /usr/share/applications
 root@kali:~# vim netease-cloud-music.desktop
