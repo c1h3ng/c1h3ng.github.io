@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "渗透前信息收集的个人总结"
-date: 2018-1-23
+date: 2018-3-20
 tags:
-  web
+  web 渗透测试
 categories:
   Web
 ---
