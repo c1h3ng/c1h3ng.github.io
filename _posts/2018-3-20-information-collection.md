@@ -101,6 +101,7 @@ nmap  -vv -sS -sV -iL target.txt -p 21,22,23,25,53,67,68,80,110,139,143,161,389,
 | 1521 | oracle | 爆破/注入 |
 | 2049 | nfs | 配置不当 |
 | 2181 | zookeeper | 未授权访问 |
+| 2375 | docker remote api | 未授权访问 |
 | 3306 | mysql | 爆破/注入 |
 | 3389 | remote desktop | 爆破/shift后门 |
 | 4848 | glassfish | 爆破/认证绕过 |
@@ -112,7 +113,9 @@ nmap  -vv -sS -sV -iL target.txt -p 21,22,23,25,53,67,68,80,110,139,143,161,389,
 | 7001 | weblogic | java反序列化/控制台弱口令 |
 | 80/443 | http/https  | web应用漏洞/心脏滴血 |
 | 8069 | zabbix | 远程命令执行/注入 |
+| 8161 | activemq | 弱口令/写文件 |
 | 8080 | tomcat | 爆破 |
+| 8083/8086 | influxDB | 未授权访问 |
 | 9000 | fastcgi | 远程命令执行 |
 | 9090 | websphere | 爆破/java反序列化 |
 | 9200/9300 | elasticsearch | 远程代码执行 |
