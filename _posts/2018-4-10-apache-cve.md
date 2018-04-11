@@ -86,6 +86,20 @@ phtml
 
 关于windows环境，p牛博客下面有一些人说测试失败，我也进行了测试，虚拟机环境 __win7+phpstudy__ : *Apache/2.4.23 (Win32) OpenSSL/1.0.2j PHP/5.4.45*
 
+配置文件(${Apache_path}/conf/extra/httpd-php.conf)如下：
+
+```html
+LoadFile "C:/Users/admin/Desktop/phpstudy/php/php-5.4.45/php5ts.dll"
+LoadModule php5_module "C:/Users/admin/Desktop/phpstudy/php/php-5.4.45/php5apache2_4.dll"
+<IfModule php5_module>
+PHPIniDir "C:/Users/admin/Desktop/phpstudy/php/php-5.4.45/"
+</IfModule>
+LoadFile "C:/Users/admin/Desktop/phpstudy/php/php-5.4.45/libssh2.dll"
+<FilesMatch "\.php$">
+    SetHandler application/x-httpd-php
+</FilesMatch>
+```
+
 用p牛的代码测试：
 
 ```php
