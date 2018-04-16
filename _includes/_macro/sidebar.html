@@ -118,6 +118,10 @@
           </div>
         {% endif %}
 
+	<div id="music">
+		  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 src="//music.163.com/outchain/player?type=0&id=2187690573&auto=1&height=90"></iframe>
+	</div>
+
         {% comment %} Blogroll {% endcomment %}
         {% if site.links %}
           <div class="links-of-blogroll motion-element {{ 'links-of-blogroll-' | append: site.links_layout | default: 'inline' }}">
@@ -137,9 +141,7 @@
           </div>
         {% endif %}
 	
-	<div id="music">
-		  <embed src="http://vip.baidu190.com/uploads/2017/201708161e4b1222edda7f3497668f8d0da77f.mp3" width="0" height="0"></embed>
-	</div>
+	
 
         {% include _custom/sidebar.html %}
 
