@@ -32,7 +32,7 @@ require_once($_GET['file']);
 
 wamp环境下，在文件名不可知部分用``<``、``>``代替即可，只使用单个``<``、``>``只能代表一个字符，需要表达多个字符使用``<<``
 
-![](../assets/images/findfirstfile.png)
+![](https://c1h3ng.github.io/assets/images/findfirstfile.png)
 
 php5、php7下都通过了测试，另外并非只有``require``、``include``、``require_once``、``include_once``一类的函数能使用：
 
@@ -56,15 +56,15 @@ php5、php7下都通过了测试，另外并非只有``require``、``include``�
 * 短文件名仅包含一个``.``，windows会忽略后面没有字符的最后一个句号
 * 对于普通文件名，超过八个字符才会创建短文件名，若小于八个字符，但是文件名含有空格，也会创建短文件名
 
-![](../assets/images/8dot3.png)
+![](https://c1h3ng.github.io/assets/images/8dot3.png)
 
 使用``dir /x``查看短文件名:
 
-![](../assets/images/dirx.png)
+![](https://c1h3ng.github.io/assets/images/dirx.png)
 
 通过短文件名的方式包含文件：
 
-![](../assets/images/lfi-8dot3.png)
+![](https://c1h3ng.github.io/assets/images/lfi-8dot3.png)
 
 # 0x03 NTFS ADS
 
@@ -103,16 +103,16 @@ php5、php7下都通过了测试，另外并非只有``require``、``include``�
 * 一个文件被指派了流名，而没有指定流类型，默认为\$DATA
 
 ## 隐藏webshell
-![](../assets/images/hiddentext.png)
+![](https://c1h3ng.github.io/assets/images/hiddentext.png)
 
 上面以数据流的形式将 流名为``hidden.txt``，流类型为``$DATA``包含至宿主文件``test.png``中，操作前后可以发现文件大小没有任何变化，具有一定的隐蔽性，可以用来隐藏webshell，木马之类的，webshell的话直接在其他文件中包含即可执行：
 
-![](../assets/images/adswebshell.png)
+![](https://c1h3ng.github.io/assets/images/adswebshell.png)
 
 ## 绕过上传黑名单
 也可以通过构造类似``<file name>:<stream name>:<stream type>``这样的文件名来绕过上传黑名单，以dvwa低等级的上传关演示：
 
-![](../assets/images/adsbypassdvwa.png)
+![](https://c1h3ng.github.io/assets/images/adsbypassdvwa.png)
 
 虽然dvwa低等级上传关没有任何防护措施，假设这里有文件上传后缀名的黑名单，就可以使用这种方式绕过黑名单上传php文件
 
@@ -120,7 +120,7 @@ php5、php7下都通过了测试，另外并非只有``require``、``include``�
 
 都知道mysql5.1以上的mysql在udf提权时，要将udf到处到指定的MYSQL目录下的``lib/plugin``下才有效，有时候会碰到默认安装后没有这个目录的，这里就可以使用到``$INDEX_ALLOCATION``这个流类型，以dvwa演示，通过抓包修改上传文件名为``test::$INDEX_ALLOCATION``：
 
-![](../assets/images/index_allocation.png)
+![](https://c1h3ng.github.io/assets/images/index_allocation.png)
 
 成功在上传目录下创建了test文件夹，udf提权时理论上可以通过``select 'xxx' into outfile 'C:\\mysql\\lib\\plugin::$INDEX_ALLOCATION';``这样的方式来创建``lib\plugin``目录
 
