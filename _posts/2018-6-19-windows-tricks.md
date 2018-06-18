@@ -124,6 +124,6 @@ php5、php7下都通过了测试，另外并非只有``require``、``include``�
 
 成功在上传目录下创建了test文件夹，udf提权时理论上可以通过``select 'xxx' into outfile 'C:\\mysql\\lib\\plugin::$INDEX_ALLOCATION';``这样的方式来创建``lib\plugin``目录
 
-...但是我是没有测试成功的，先留个坑吧，希望以后有机会能搞明白了
+...但是我是没有测试成功的，先留个坑吧，折腾的太晚了，再继续可能会猝死，希望以后有机会能搞明白了
 
 还有[IIS3.0/4.0的源代码泄露](http://www.nsfocus.net/index.php?act=sec_bug&do=view&bug_id=3442)和[IIS6.0/7.5的目录访问权限绕过](https://www.exploit-db.com/exploits/19033/)等等都和NTFS ADS有关
