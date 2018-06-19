@@ -8,9 +8,7 @@ tags:
 categories:
   Web
 ---
-
 # 0x01 Windows FindFirstFile API
-
 ``FindFirstFile``是windows系统的API函数，用于查找指定目录下的第一个文件或目录
 
 测试代码如下：

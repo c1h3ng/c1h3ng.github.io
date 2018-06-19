@@ -7,11 +7,8 @@ tags:
 categories:
   Web
 ---
-
 在p牛博客最近更新的文章，[传送门](https://www.leavesongs.com/PENETRATION/apache-cve-2017-15715-vulnerability.html)，感觉很有意思，自己在自己本地测试了一下
-
 # 0x01 正则表达式中的 '$'
-
 apache这次解析漏洞的根本原因就是这个 ``$``，正则表达式中，我们都知道$用来匹配字符串结尾位置，我们来看看[菜鸟教程](http://www.runoob.com/regexp/regexp-syntax.html)中对正则表达符``$``的解释：
 
 > 匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 '\\n' 或 '\\r'。要匹配 $ 字符本身，请使用 \\$。

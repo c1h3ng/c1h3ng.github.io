@@ -7,9 +7,7 @@ tags:
 categories:
   Web
 ---
-
 # 0x01 XML基础
-
 xml是用于传输存储数据，并非像html一样显示数据的，直接举个例子说明：
 
 ```xml
